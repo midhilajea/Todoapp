@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12"></div>
+            <div class="banner">
+                <div class="banner-text">
+                    <h3>ToDO</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="row" style="margin-top: 50px;" >
+            <div class="col-md-6">
+                    <form method="post" class="p-3 shadow">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="taskname" placeholder="enter task name" class="form-control">
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="priority" placeholder="enter task priority" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="date" placeholder="select date" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">submit</button>
+                    </form>
+                    
+
+                   <br>
+                    
+
+                    
+                
+
+                </div>
+                <div class="col-md-6">
+                    <h1>task to be completed</h1>
+                    {% for i in task1 %}
+                    <div class=" shadow card">
+                        
+                        <div class="card-body">
+                            
+                            <h5 class="card-title"> {{i.name}}</h5>
+                            <p class="card-text"><b>{{i.preiority}}</b></p>
+                            <p class="card-date">{{i.date}}</p>
+                            <a href="{% url 'delete' i.id %}" class="btn btn-danger">delete</a>
+                            <a href="{% url 'update' i.id %}" class="btn btn-success">edit</a>
+                            
+                        </div>
+                        
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+       
+        
+        
+    
+    
+</body>
+</html>
